@@ -89,34 +89,38 @@ import myhdl
 
 import hdlutils
 
-def sumbits( Clk, Reset, D, Q):
+def sumbits(Clk, Reset, D, Q):
     ''' a recursive pipelined implementation'''
-    WIDTH_D = len(D)
+    LWIDTH_D = len(D)
+	if LWIDTH_D > 2:
+        # recurse by splitting things up
+        LWIDTH_L = LWIDTH_D - LWIDTH_D / 2
+        dupper, dlower = [myhdl.Signal(myhdl.intbv(0)[LWIDTH_L:]) for _ in range(2)]
+        lql, lqu = [myhdl.Signal(myhdl.intbv(0)[hdlutils.widthr(LWIDTH_L):]) for _ in range(2)]
+        supper = sumbits(Clk, Reset, dupper, lqu)
+        slower = sumbits(Clk, Reset, dlower, lql)
 
-    if WIDTH_D > 2 :
-    	# recurse by splitting things up
-        du, dl = [myhdl.Signal( myhdl.intbv(0)[ WIDTH_L :]) for _ in range(2)]
-        lql, lqu = [myhdl.Signal( myhdl.intbv(0)[ hdlutils.widthr(WIDTH_L) :]) for _ in range(2)]
-        su = sumbits( Clk, Reset, du, lqu) 
-        sl = sumbits( Clk, Reset, dl, lql) 
-        
-        @myhdl.always_comb
-        def split():
-            du.next = D[: WIDTH_L] # this will expand on the left in case the input data-size is uneven
-            dl.next = D[WIDTH_L :]
+		@myhdl.always_comb
+       def split():
+           ''' this will expand on the left in case the input data-size is uneven '''
+           dupper.next = D[: LWIDTH_L]
+           dlower.next = D[LWIDTH_L:]
 
-        @myhdl.always_seq(Clk.posedge, Reset)
-        def rtlr():
-            Q.next = lqu + lql
+       @myhdl.always_seq(Clk.posedge, Reset)
+       def rtlr():
+           ''' the result is the sum of the previous branches '''
+           Q.next = lqu + lql
 
-        return su, sl, split, rtlr
-    
+       return supper, slower, split, rtlr
+
     else:
-	    # know when to stop           
-        @myhdl.always_seq(Clk.posedge, Reset)
-        def rtl2():
-            Q.next = D[1] + D[0]
-        return rtl2  
+	   # know when to stop
+       @myhdl.always_seq(Clk.posedge, Reset)
+       def rtl2():
+           ''' the result is the sum of the two (terminal) leaves '''
+           Q.next = D[1] + D[0]
+       return rtl2
+
 ``` 
 
 It looks more complicated than the simple VHDL functions we defined earlier, but it matches up to the construct in the paper.
