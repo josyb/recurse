@@ -52,9 +52,9 @@ As I said above, recursion is easy; writing a recursive VHDL function to e.g., c
  
  When synthesised both will end up in a staircase: one might be going up, the other might be going down, but either eventually delivers the sum.
  
- ![For Loop](http://)
+ ![For Loop](countbits-for-loop.png)
  
- ![Recursion with Rule Set A](http://)
+ ![Recursion with Rule Set A](countbits-recursive-A.png)
  
  Now using Rule Set B we get something totally different
  
@@ -70,7 +70,7 @@ As I said above, recursion is easy; writing a recursive VHDL function to e.g., c
 	end function;
  ```
  
-![Recursion with Rule Set B](/C:/qdesigns/jb/countbits/countbits-recursive-B-cropped.png/)
+![Recursion with Rule Set B](countbits-recursive-B-cropped.png/)
 
 We get a bottoms-up binary tree!
 You can notice one important advantage of the last approach: we have a lower number of levels of logic; in this case 3 instead of 7.
@@ -78,7 +78,7 @@ When the clockfrequency in the FPGA gets high (and when doesn't it?) the last ap
 an array of std_logic_vectors.  
 Now exactly such a task like adding up the 9 elements in a 3 by 3 [convolution](http://docs.gimp.org/en/plug-in-convmatrix.html), say to do Gauss filtering, calls for a pipelined version.
 Recursive functions are inherently non-pipeline-able as you can not infer registers inside a VHDL function (to my knowledge).
-And that is why, at the time, I printed that document, and kept it: it talks about using _recursive **components**_. I refer to the [**pdf**](www.comit.com/dav4n3.pdf) but it essentially comes down to instantiate the entity itself in its own architecture.
+And that is why, at the time, I printed that document, and kept it: it talks about using _recursive **components**_. I refer to the [**pdf**](http://www.comit.com/dav4n3.pdf) but it essentially comes down to instantiate the entity itself in its own architecture.
 I tried a copy-paste of the code inside the document but that only succeeded partially with quite some editing to do. 
 But as I have switched to MyHDL, several months back, I decided to do this in MyHDL instead of doing it in VHDL and consequently abandoned the editing.
 
