@@ -153,32 +153,38 @@ The strategy in recursion (using Rule Set B) is to cut the task up into smaller 
 ```python
    if WIDTH_D > 2 :
         # recurse by splitting things up
-        du, dl = [myhdl.Signal( myhdl.intbv(0)[ WIDTH_L :]) for _ in range(2)]
-        lql, lqu = [myhdl.Signal( myhdl.intbv(0)[ hdlutils.widthr(WIDTH_L) :]) for _ in range(2)]
-        su = sumbits( Clk, Reset, du, lqu) 
-        sl = sumbits( Clk, Reset, dl, lql) 
-        
-        @myhdl.always_comb
-        def split():
-            du.next = D[: WIDTH_L] # this will expand on the left in case the input data-size is uneven
-            dl.next = D[WIDTH_L :]
+        LWIDTH_L = LWIDTH_D - LWIDTH_D / 2
+        dupper, dlower = [myhdl.Signal(myhdl.intbv(0)[LWIDTH_L:]) for _ in range(2)]
+        lql, lqu = [myhdl.Signal(myhdl.intbv(0)[hdlutils.widthr(LWIDTH_L):]) for _ in range(2)]
+        supper = sumbits(Clk, Reset, dupper, lqu)
+        slower = sumbits(Clk, Reset, dlower, lql)
 
-        @myhdl.always_seq(Clk.posedge, Reset)
-        def rtlr():
-            Q.next = lqu + lql
+		@myhdl.always_comb
+       def split():
+           ''' this will expand on the left in case the input data-size is uneven '''
+           dupper.next = D[: LWIDTH_L]
+           dlower.next = D[LWIDTH_L:]
 
-        return su, sl, split, rtlr
+       @myhdl.always_seq(Clk.posedge, Reset)
+       def rtlr():
+           ''' the result is the sum of the previous branches '''
+           Q.next = lqu + lql
+
+       return supper, slower, split, rtlr
+
 ```
 This is Rule 1. and 2. of our Rule Set B.  
    1. We simply split each input into two sets. This is achieved by
    
    ```python
-        du, dl = [myhdl.Signal( intbv(0)[ WIDTH_L :]) for _ in range(2)]
+        dupper, dlower = [myhdl.Signal(myhdl.intbv(0)[LWIDTH_L:]) for _ in range(2)]
 
 		@myhdl.always_comb
-        def split():
-            du.next = D[: WIDTH_L] # this will expand on the left in case the input data-size is uneven
-            dl.next = D[WIDTH_L :]
+       def split():
+           ''' this will expand on the left in case the input data-size is uneven '''
+           dupper.next = D[: LWIDTH_L]
+           dlower.next = D[LWIDTH_L:]
+
    ```
    If the actual input set has an uneven number of element we end up with an even and an uneven set. 
    We could pass these on to the next recursion but this will create an imbalance in the number of registers in the path and thus deliver incorrect results.
@@ -187,25 +193,28 @@ This is Rule 1. and 2. of our Rule Set B.
    and which I will show in some not too distant future).
    2. We recurse for each of the two sets
    ```python
-        lql, lqu = [myhdl.Signal( intbv(0)[ hdlutils.widthr(WIDTH_L) :]) for _ in range(2)]
-        su = sumbits( Clk, Reset, du, lqu) 
-        sl = sumbits( Clk, Reset, dl, lql) 
-        
-        @myhdl.always_seq(Clk.posedge, Reset)
-        def rtlr():
-            Q.next = lqu + lql
-        return su, sl, split, rtlr            
+        lql, lqu = [myhdl.Signal(myhdl.intbv(0)[hdlutils.widthr(LWIDTH_L):]) for _ in range(2)]
+        supper = sumbits(Clk, Reset, dupper, lqu)
+        slower = sumbits(Clk, Reset, dlower, lql)
+
+       @myhdl.always_seq(Clk.posedge, Reset)
+       def rtlr():
+           ''' the result is the sum of the previous branches '''
+           Q.next = lqu + lql
+
+       return supper, slower, split, rtlr     
    ```
    We recurse for each newly split-off set and finally add the two returned results in an @always_seq process that will register the result.   
 
 And finally Rule 3.
 ```python
     else:
-	    # know when to stop           
-        @myhdl.always_seq(Clk.posedge, Reset)
-        def rtl2():
-            Q.next = D[1] + D[0]
-        return rtl2  
+	   # know when to stop
+       @myhdl.always_seq(Clk.posedge, Reset)
+       def rtl2():
+           ''' the result is the sum of the two (terminal) leaves '''
+           Q.next = D[1] + D[0]
+       return rtl2
 ``` 
 When the input data only contains two elements we return the registered sum of them.  
 
