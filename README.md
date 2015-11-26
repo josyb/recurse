@@ -220,7 +220,7 @@ When the input data only contains two elements we return the registered sum of t
 
 That's all.
 
-Note: I learned today that Christpher Felton has another [fine example](https://bitbucket.org/cfelton/examples/src/f3383e14f18a57852e17c10ee4cd316fbfafbf85/rfft/rfft.py?at=default) 
+Note: I learned today that [Christopher Felton](https://github.com/cfelton) has another [fine example](https://bitbucket.org/cfelton/examples/src/f3383e14f18a57852e17c10ee4cd316fbfafbf85/rfft/rfft.py?at=default) 
 using recursion in MyHDL. Check it out too!
 It is a fully worked-out module so you have to dig into ```def fft_core():``` to find the little gem.
 
