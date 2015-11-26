@@ -52,8 +52,10 @@ As I said above, recursion is easy; writing a recursive VHDL function to e.g., c
  
  When synthesised both will end up in a staircase: one might be going up, the other might be going down, but either eventually delivers the sum.
  
+ For Loop
  ![For Loop](countbits-for-loop.png)
  
+ Recursive Function
  ![Recursion with Rule Set A](countbits-recursive-A.png)
  
  Now using Rule Set B we get something totally different
@@ -74,14 +76,14 @@ As I said above, recursion is easy; writing a recursive VHDL function to e.g., c
 
 We get a bottoms-up binary tree!
 You can notice one important advantage of the last approach: we have a lower number of levels of logic; in this case 3 instead of 7.
-When the clockfrequency in the FPGA gets high (and when doesn't it?) the last approach will be a lot faster. Imagine you are not adding up the _one_ bits in a vectors but
-an array of std_logic_vectors.  
+When the clockfrequency in the FPGA gets high (and when doesn't it?) the last approach will be a lot faster. Imagine you are not adding up the _one_ bits in a vectors but an array of std_logic_vectors.  
 Now exactly such a task like adding up the 9 elements in a 3 by 3 [convolution](http://docs.gimp.org/en/plug-in-convmatrix.html), say to do Gauss filtering, calls for a pipelined version.
 Recursive functions are inherently non-pipeline-able as you can not infer registers inside a VHDL function (to my knowledge).
 And that is why, at the time, I printed that document, and kept it: it talks about using _recursive **components**_. I refer to the [**pdf**](http://www.comit.com/dav4n3.pdf) but it essentially comes down to instantiate the entity itself in its own architecture.
 I tried a copy-paste of the code inside the document but that only succeeded partially with quite some editing to do. 
 But as I have switched to MyHDL, several months back, I decided to do this in MyHDL instead of doing it in VHDL and consequently abandoned the editing.
 
+Here is the MyHDL code:
 ```python
 import myhdl
 
@@ -119,6 +121,7 @@ def sumbits( Clk, Reset, D, Q):
 
 It looks more complicated than the simple VHDL functions we defined earlier, but it matches up to the construct in the paper.
 
+The VHDL (or Verilog, you choose) conversion results in this schematic:
 ![The Pipelined Recursion (Rule Set B)](/sumbits-recursive-B-pipelined-no-enable-cropped.png/)
 
 Let's inspect the source:
