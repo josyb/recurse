@@ -1,0 +1,443 @@
+$date
+    Thu Nov 26 14:50:31 2015
+$end
+$version
+    MyHDL 1.0dev
+$end
+$timescale
+    1ns
+$end
+
+$scope module tb_sumbits $end
+$var reg 1 ! Reset $end
+$var reg 5 " Q $end
+$var reg 8 # ClkCount $end
+$var reg 17 $ D $end
+$var reg 1 % Clk $end
+$scope module dut $end
+$var reg 1 ! Reset $end
+$var reg 4 & lql $end
+$var reg 17 $ D $end
+$var reg 9 ' dupper $end
+$var reg 1 % Clk $end
+$var reg 4 ( lqu $end
+$var reg 5 " Q $end
+$var reg 9 ) dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 3 * lql $end
+$var reg 9 ) D $end
+$var reg 5 + dupper $end
+$var reg 1 % Clk $end
+$var reg 3 , lqu $end
+$var reg 4 & Q $end
+$var reg 5 - dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 . lql $end
+$var reg 5 - D $end
+$var reg 3 / dupper $end
+$var reg 1 % Clk $end
+$var reg 2 0 lqu $end
+$var reg 3 * Q $end
+$var reg 3 1 dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 2 lql $end
+$var reg 3 1 D $end
+$var reg 2 3 dupper $end
+$var reg 1 % Clk $end
+$var reg 2 4 lqu $end
+$var reg 2 . Q $end
+$var reg 2 5 dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 2 Q $end
+$var reg 2 5 D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 4 Q $end
+$var reg 2 3 D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 6 lql $end
+$var reg 3 / D $end
+$var reg 2 7 dupper $end
+$var reg 1 % Clk $end
+$var reg 2 8 lqu $end
+$var reg 2 0 Q $end
+$var reg 2 9 dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 6 Q $end
+$var reg 2 9 D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 8 Q $end
+$var reg 2 7 D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 : lql $end
+$var reg 5 + D $end
+$var reg 3 ; dupper $end
+$var reg 1 % Clk $end
+$var reg 2 < lqu $end
+$var reg 3 , Q $end
+$var reg 3 = dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 > lql $end
+$var reg 3 = D $end
+$var reg 2 ? dupper $end
+$var reg 1 % Clk $end
+$var reg 2 @ lqu $end
+$var reg 2 : Q $end
+$var reg 2 A dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 > Q $end
+$var reg 2 A D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 @ Q $end
+$var reg 2 ? D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 B lql $end
+$var reg 3 ; D $end
+$var reg 2 C dupper $end
+$var reg 1 % Clk $end
+$var reg 2 D lqu $end
+$var reg 2 < Q $end
+$var reg 2 E dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 B Q $end
+$var reg 2 E D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 D Q $end
+$var reg 2 C D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 3 F lql $end
+$var reg 9 ' D $end
+$var reg 5 G dupper $end
+$var reg 1 % Clk $end
+$var reg 3 H lqu $end
+$var reg 4 ( Q $end
+$var reg 5 I dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 J lql $end
+$var reg 5 I D $end
+$var reg 3 K dupper $end
+$var reg 1 % Clk $end
+$var reg 2 L lqu $end
+$var reg 3 F Q $end
+$var reg 3 M dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 N lql $end
+$var reg 3 M D $end
+$var reg 2 O dupper $end
+$var reg 1 % Clk $end
+$var reg 2 P lqu $end
+$var reg 2 J Q $end
+$var reg 2 Q dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 N Q $end
+$var reg 2 Q D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 P Q $end
+$var reg 2 O D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 R lql $end
+$var reg 3 K D $end
+$var reg 2 S dupper $end
+$var reg 1 % Clk $end
+$var reg 2 T lqu $end
+$var reg 2 L Q $end
+$var reg 2 U dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 R Q $end
+$var reg 2 U D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 T Q $end
+$var reg 2 S D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 V lql $end
+$var reg 5 G D $end
+$var reg 3 W dupper $end
+$var reg 1 % Clk $end
+$var reg 2 X lqu $end
+$var reg 3 H Q $end
+$var reg 3 Y dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 Z lql $end
+$var reg 3 Y D $end
+$var reg 2 [ dupper $end
+$var reg 1 % Clk $end
+$var reg 2 \ lqu $end
+$var reg 2 V Q $end
+$var reg 2 ] dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 Z Q $end
+$var reg 2 ] D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 \ Q $end
+$var reg 2 [ D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 ^ lql $end
+$var reg 3 W D $end
+$var reg 2 _ dupper $end
+$var reg 1 % Clk $end
+$var reg 2 ` lqu $end
+$var reg 2 X Q $end
+$var reg 2 a dlower $end
+$scope module sbs1 $end
+$var reg 1 ! Reset $end
+$var reg 2 ^ Q $end
+$var reg 2 a D $end
+$var reg 1 % Clk $end
+$upscope $end
+$scope module sbs0 $end
+$var reg 1 ! Reset $end
+$var reg 2 ` Q $end
+$var reg 2 _ D $end
+$var reg 1 % Clk $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+
+$enddefinitions $end
+$dumpvars
+0!
+b00000 "
+b00000000 #
+b00000000000000000 $
+0%
+b0000 &
+b000000000 '
+b0000 (
+b000000000 )
+b000 *
+b00000 +
+b000 ,
+b00000 -
+b00 .
+b000 /
+b00 0
+b000 1
+b00 2
+b00 3
+b00 4
+b00 5
+b00 6
+b00 7
+b00 8
+b00 9
+b00 :
+b000 ;
+b00 <
+b000 =
+b00 >
+b00 ?
+b00 @
+b00 A
+b00 B
+b00 C
+b00 D
+b00 E
+b000 F
+b00000 G
+b000 H
+b00000 I
+b00 J
+b000 K
+b00 L
+b000 M
+b00 N
+b00 O
+b00 P
+b00 Q
+b00 R
+b00 S
+b00 T
+b00 U
+b00 V
+b000 W
+b00 X
+b000 Y
+b00 Z
+b00 [
+b00 \
+b00 ]
+b00 ^
+b00 _
+b00 `
+b00 a
+$end
+1!
+1%
+#5
+0%
+b00000001 #
+#10
+1%
+#15
+0%
+b00000010 #
+#20
+1%
+#25
+0%
+b00000011 #
+#30
+1%
+#35
+0%
+b00000100 #
+0!
+#40
+1%
+#42
+b00000000000010011 $
+b000010011 )
+b10011 -
+b010 /
+b011 1
+b11 5
+b10 9
+#45
+0%
+b00000101 #
+#50
+1%
+b10 2
+b01 6
+#52
+b00000000000000001 $
+b000000001 )
+b00001 -
+b000 /
+b001 1
+b01 5
+b00 9
+#55
+0%
+b00000110 #
+#60
+1%
+b00 6
+b01 0
+b01 2
+b10 .
+#62
+b00000000000000010 $
+b000000010 )
+b00010 -
+b010 1
+b10 5
+#65
+0%
+b00000111 #
+#70
+1%
+b011 *
+b01 .
+b00 0
+#72
+b00000000000000011 $
+b000000011 )
+b00011 -
+b011 1
+b11 5
+#75
+0%
+b00001000 #
+#80
+1%
+b10 2
+b001 *
+b0011 &
+#85
+0%
+b00001001 #
+#90
+1%
+b00011 "
+b0001 &
+b10 .
+#95
+0%
+b00001010 #
+#100
+1%
+b010 *
+b00001 "
+#105
+0%
+b00001011 #
+#110
+1%
+b0010 &
+#115
+0%
+b00001100 #
+#120
+1%
+b00010 "
+#122
