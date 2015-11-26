@@ -2,7 +2,7 @@
 
 Today, June 15<sup>th</sup> 2015, I was going through a heap of papers as we recently moved offices 
 from Leuven (home of Stella Artois) to Hoegaarden ( home of the famous 'witbier') 
-as I stumbled on a printout of this [**Design Advantage**](www.comit.com/dav4n3.pdf) from [Comit Systems Inc.]( www.comit.com)
+as I stumbled on a printout of this [**Design Advantage**](http://www.comit.com/dav4n3.pdf) from [Comit Systems Inc.](http://www.comit.com)
 titled: _Recursive VHDL structures in FPGA synthesis_ by _Rangarajan Sundaravaradan_.  
 So I indulged myself in my favourite pastime : Applying recursive programming in hardware.  
 Recursion is easy: I learned the rules from a book that I, some 30 years ago, recovered from the garbage bin at a previous employer. 
